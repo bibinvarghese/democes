@@ -1,0 +1,16 @@
+[Unit]
+AssertPathExists=__WD__
+Requires=weston.service
+After=weston.service
+
+[Service]
+User=mendel
+WorkingDirectory=__WD__
+Environment=XDG_RUNTIME_DIR=__XDG__
+ExecStart=/usr/bin/python3 bodypix_gl_imx.py __PARAMS__
+Restart=always
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=default.target
